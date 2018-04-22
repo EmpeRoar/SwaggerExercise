@@ -15,8 +15,23 @@ namespace Swag.Api.Controllers
         public ValuesController(IPeopleService peopleService){
             _peopleService = peopleService;
         }
-        // GET api/values
+
+
+        /// <summary>
+        /// Get a People.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        /// Nothing piece of cigar
+        ///
+        /// </remarks>
+        /// <returns>A newly created TodoItem</returns>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response>
         [HttpGet]
+        [ProducesResponseType(typeof(Person), 201)]
+        [ProducesResponseType(400)]
         public IEnumerable<Person> Get()
         {
 
@@ -31,7 +46,21 @@ namespace Swag.Api.Controllers
         }
 
 
-        // POST api/values
+        /// <summary>
+        /// Create a People.
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /Value
+        ///     {
+        ///        "string": "Item1",
+        ///     }
+        ///
+        /// </remarks>
+        /// <returns>A newly created Value</returns>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response>
         [HttpPost]
         public void Post([FromBody] string value)
         {
