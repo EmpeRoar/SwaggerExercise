@@ -2,6 +2,9 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Swag.Api.Models;
+using Swag.Api.Repositories;
+using Swag.Api.Services;
 using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.IO;
@@ -50,6 +53,8 @@ namespace Swag.Api
 
             });
 
+            services.AddTransient<IPeopleService, PeopleService>();
+            services.AddTransient<IRepository<Person>, Repository<Person>>();
 
         }
 

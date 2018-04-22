@@ -3,17 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Swag.Api.Models;
+using Swag.Api.Services;
 
 namespace Swag.Api.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : ControllerBase
     {
+        private readonly IPeopleService _peopleService;
+        public ValuesController(IPeopleService peopleService){
+            _peopleService = peopleService;
+        }
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Person> Get()
         {
-            return new string[] { "value1", "value2" };
+
+            return _peopleService.GetPeople();
         }
 
         // GET api/values/5
